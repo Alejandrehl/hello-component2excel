@@ -1,5 +1,7 @@
 <template>
   <div class="hello">
+    <button class="btn btn-primary" @click="testVue()">Probando</button>
+
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -31,10 +33,18 @@
 </template>
 
 <script>
+import ExcelExport from 'fast-component2excel';
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  methods: {
+    async testVue(){
+      let data = {"_id":"5c09daa514f0c60dd09ba80c","owner":"5c06b092a9c1849d951db834","deleted":null,"roles":[],"_vid":0,"_fvid":0,"state":"submitted","data":{"title":"Evento de prueba 3","description":"<p>asdasdasdadasd</p>\n","date":"2018-12-06T03:00:00.000Z","submit":true},"access":[],"form":"5c09961249b40a27a0da823b","externalIds":[],"externalTokens":[],"created":"2018-12-07T02:27:49.883Z","modified":"2018-12-07T02:27:49.884Z","__v":0};
+      await ExcelExport.convertJsonToFile(data);
+    }
   }
 }
 </script>
